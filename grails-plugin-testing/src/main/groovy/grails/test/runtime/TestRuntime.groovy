@@ -39,9 +39,15 @@ class TestRuntime {
     List<TestPlugin> plugins
     private Map<String, Object> registry = [:]
     private boolean runtimeClosed = false
+    private boolean shared
     
-    public TestRuntime(Set<String> features, List<TestPlugin> plugins) {
+    public TestRuntime(Set<String> features, List<TestPlugin> plugins, boolean shared) {
         changeFeaturesAndPlugins(features, plugins)
+        this.@shared=shared
+    }
+    
+    public boolean isShared() {
+        return this.@shared
     }
     
     public void changeFeaturesAndPlugins(Set<String> features, List<TestPlugin> plugins) {

@@ -234,7 +234,9 @@ class GrailsApplicationTestPlugin implements TestPlugin {
                 }
                 break
             case 'afterClass':
-                shutdownApplicationContext(runtime)
+                if(!runtime.shared) {
+                    shutdownApplicationContext(runtime)
+                }
                 break
             case 'after':
                 resetGrailsApplication(runtime)
